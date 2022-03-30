@@ -32,12 +32,25 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    'nuxt-socket-io',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
+  },
+  // Socket.io Configuration
+  io: {
+    sockets: [
+      {
+        url: 'http://nuxt-socket-io.herokuapp.com',
+        cors: {
+          credentials: true, // "Configures the Access-Control-Allow-Credentials CORS header. Set to true to pass the header, otherwise it is omitted."
+          origin: ['*'], // Array of whitelisted origin(s)
+        },
+      },
+    ],
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
